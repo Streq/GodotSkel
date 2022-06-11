@@ -140,10 +140,18 @@ jobs:
         with:
           tag_name: ${{ env.VERSION }}
           files: exports/*
+  ShouldPushToItch:
+    outputs: 
+      PUSH_TO_ITCH: ${{ steps.set_push_to_itch.outputs.PUSH_TO_ITCH }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set PUSH_TO_ITCH variable
+        id: set_push_to_itch
+        if: ${{ env.PUSH_TO_ITCH == 'true'}}
+        run: echo "::set-output name=PUSH_TO_ITCH::true"
   PushExportsToItch:
-    needs: BuildAndPublish
-    if: ${{ contains(github.ref, 'main') }}
-    #if: ${{ false }}
+    needs: [BuildAndPublish, ShouldPushToItch]
+    if: ${{ needs.ShouldPushToItch.outputs.PUSH_TO_ITCH == 'true' }}
     runs-on: ubuntu-latest
     env:
       VERSION: ${{ needs.BuildAndPublish.outputs.version }}
@@ -194,7 +202,7 @@ jobs:
     if: ${{ always() }}
     env:
       #DID_PREV_JOBS_SUCCEED: ${{ contains(needs.BuildAndPublish.result, 'success' ) && contains(needs.CreateNewGithubRelease.result, 'success' ) }}
-      DID_PREV_JOBS_SUCCEED: ${{ contains(needs.BuildAndPublish.result, 'success' ) && contains(needs.CreateNewGithubRelease.result, 'success' ) && contains(needs.PushExportsToItch.result, 'success' ) }}
+      DID_PREV_JOBS_SUCCEED: ${{ contains(needs.BuildAndPublish.result, 'success' ) && contains(needs.CreateNewGithubRelease.result, 'success' ) && !contains(needs.PushExportsToItch.result, 'failure' ) }}
       VERSION: ${{ needs.BuildAndPublish.outputs.version }}
       COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
       RELEASE_URL: ${{ needs.CreateNewGithubRelease.outputs.url }}
