@@ -20,6 +20,15 @@ gh repo create
 ? Would you like to push commits from the current branch to "origin"? Yes
 ✓ Pushed commits to git@github.com:Streq/miproject.git
 
+branch gh-pages
+checkout gh-pages
+git push --set-upstream origin gh-pages
+#configure gh-pages branch on the gh repo
+
+branch main
+checkout main
+git push --set-upstream origin main
+
 ```
 
 ## Update secrets
