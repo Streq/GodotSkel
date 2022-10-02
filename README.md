@@ -23,11 +23,13 @@ gh repo create
 branch gh-pages
 checkout gh-pages
 git push --set-upstream origin gh-pages
+checkout develop
 #configure gh-pages branch on the gh repo
 
 branch main
 checkout main
 git push --set-upstream origin main
+checkout develop
 
 ```
 
