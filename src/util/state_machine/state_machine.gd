@@ -6,12 +6,13 @@ export (String) var start_state
 
 var current: State = null
 var states:= {}
-
+onready var root = owner
 
 func initialize():
 	for state in get_children():
 		states[state.name] = state
 		state.connect("finish", self, "_change_state")
+		state.root = root
 	current = states[start_state]
 	current.enter(null)
 
@@ -24,7 +25,7 @@ func update(delta: float):
 func handle_input(event: InputEvent):
 	current._handle_input(event)
 
-func _change_state(state_name: String, params):
+func _change_state(state_name: String, params = []):
 	current.exit()
 	current = states[state_name]
 	current.enter(params)
