@@ -49,6 +49,14 @@ git push --set-upstream origin main
 git checkout develop
 ```
 
+## Create nightly release
+gh release create nightly
+? Title (optional) nightly
+? Release notes Leave blank
+? Is this a prerelease? No
+? Submit? Publish release
+
+
 ## Release
 ```
 chmod +x release.sh
