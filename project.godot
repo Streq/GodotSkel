@@ -22,12 +22,17 @@ _global_script_classes=[ {
 "base": "Reference",
 "class": "Bool",
 "language": "GDScript",
-"path": "res://src/global/bool.gd"
+"path": "res://src/util/bool/bool.gd"
 }, {
 "base": "Reference",
 "class": "ButtonState",
 "language": "GDScript",
 "path": "res://src/util/controller/button_state.gd"
+}, {
+"base": "Reference",
+"class": "CircularBuffer",
+"language": "GDScript",
+"path": "res://src/util/data_structure/circular_buffer.gd"
 }, {
 "base": "Reference",
 "class": "ColorUtils",
@@ -42,22 +47,27 @@ _global_script_classes=[ {
 "base": "Reference",
 "class": "InputUtils",
 "language": "GDScript",
-"path": "res://src/global/input_utils.gd"
+"path": "res://src/util/input/input_utils.gd"
 }, {
 "base": "Reference",
 "class": "Math",
 "language": "GDScript",
-"path": "res://src/global/math.gd"
+"path": "res://src/util/math/math.gd"
 }, {
 "base": "Reference",
 "class": "NodeUtils",
 "language": "GDScript",
-"path": "res://src/global/node_utils.gd"
+"path": "res://src/util/node/node_utils.gd"
 }, {
 "base": "Node",
 "class": "Palette",
 "language": "GDScript",
 "path": "res://src/util/color/palette.gd"
+}, {
+"base": "Node",
+"class": "PauseState",
+"language": "GDScript",
+"path": "res://src/util/global/pause/pause.gd"
 }, {
 "base": "Reference",
 "class": "PointComparatorByAngleWithSegment",
@@ -67,12 +77,12 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "PoolArray",
 "language": "GDScript",
-"path": "res://src/global/pool_array.gd"
+"path": "res://src/util/pool_array/pool_array.gd"
 }, {
 "base": "Reference",
 "class": "RenderUtils",
 "language": "GDScript",
-"path": "res://src/global/render_utils.gd"
+"path": "res://src/util/render/render_utils.gd"
 }, {
 "base": "Node2D",
 "class": "Rope",
@@ -114,12 +124,14 @@ _global_script_class_icons={
 "AudioCrossfadePlayer": "",
 "Bool": "",
 "ButtonState": "",
+"CircularBuffer": "",
 "ColorUtils": "",
 "GeometryUtils": "",
 "InputUtils": "",
 "Math": "",
 "NodeUtils": "",
 "Palette": "",
+"PauseState": "",
 "PointComparatorByAngleWithSegment": "",
 "PoolArray": "",
 "RenderUtils": "",
@@ -137,10 +149,43 @@ _global_script_class_icons={
 config/name="skel"
 config/icon="res://assets/texture/icon.png"
 
+[autoload]
+
+ObjectPool="*res://src/util/global/object_pool/ObjectPool.tscn"
+Music="*res://src/util/global/music/Music.tscn"
+Group="*res://src/util/global/group/group.gd"
+Pause="*res://src/util/global/pause/Pause.tscn"
+GifRecorder="res://src/util/global/gif_recorder/gif_recorder.tscn"
+FPS="res://src/util/global/FPS/FPS.tscn"
+SFX="*res://src/util/audio_pool/AudioPool.tscn"
+
 [importer_defaults]
 
 texture={
 "flags/filter": false
+}
+
+[input]
+
+fullscreen={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":70,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+restart={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":82,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+record={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":71,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+exit={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777217,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
 }
 
 [physics]

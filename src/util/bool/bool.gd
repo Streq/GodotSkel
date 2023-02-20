@@ -22,5 +22,6 @@ static func add(a: bool, b: bool) -> int:
 #sign from bool
 static func sign(negative: bool) -> float:
 	return -1.0 if negative else 1.0
+
 #no idea which is faster
 #	return 1.0 - 2.0*float(negative)
