@@ -147,6 +147,7 @@ _global_script_class_icons={
 [application]
 
 config/name="skel"
+run/main_scene="res://src/main.tscn"
 config/icon="res://assets/texture/icon.png"
 
 [autoload]
@@ -157,7 +158,8 @@ Group="*res://src/util/global/group/group.gd"
 Pause="*res://src/util/global/pause/Pause.tscn"
 GifRecorder="res://src/util/global/gif_recorder/gif_recorder.tscn"
 FPS="res://src/util/global/FPS/FPS.tscn"
-SFX="*res://src/util/audio_pool/AudioPool.tscn"
+SFX="*res://src/util/global/audio_pool/AudioPool.tscn"
+ParticlePool="*res://src/util/global/particle_pool/ParticlePool.tscn"
 
 [importer_defaults]
 
