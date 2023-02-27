@@ -166,6 +166,8 @@ GifRecorder="res://src/util/global/gif_recorder/gif_recorder.tscn"
 FPS="res://src/util/global/FPS/FPS.tscn"
 SFX="*res://src/util/global/audio_pool/AudioPool.tscn"
 ParticlePool="*res://src/util/global/particle_pool/ParticlePool.tscn"
+NGIO="*res://src/util/global/newgrounds.io/NGIO.gd"
+Achievements="*res://src/util/global/Achievements/Achievements.tscn"
 
 [importer_defaults]
 
