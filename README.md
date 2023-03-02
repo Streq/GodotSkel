@@ -1,4 +1,6 @@
 ## Create project from skel
+(Alternatively to all this you can do "use this template on github")
+
 ```
 git clone https://github.com/Streq/GodotSkel.git miproject
 cd miproject
@@ -19,34 +21,18 @@ gh repo create
 ✓ Added remote git@github.com:Streq/miproject.git
 ? Would you like to push commits from the current branch to "origin"? Yes
 ✓ Pushed commits to git@github.com:Streq/miproject.git
+```
 
-git branch gh-pages
-git checkout gh-pages
-git push --set-upstream origin gh-pages
-git checkout develop
-#configure gh-pages branch on the gh repo
-
-git branch main
-git checkout main
-git push --set-upstream origin main
-git checkout develop
-
+## Setup main and gh-pages branches and scripts
+```
+chmod +x setup.sh
+./setup.sh
 ```
 
 ## Update secrets
 ```
-cp secrets_template.sh secrets.sh
-chmod +x secrets.sh
 #edit secrets.sh with keys and configs
 ./secrets.sh
-```
-
-## Create main
-```
-git checkout -b main
-git push origin main
-git push --set-upstream origin main
-git checkout develop
 ```
 
 ## Create nightly release
