@@ -5,10 +5,11 @@ signal changed(state)
 
 var state = 0
 
-enum Level{
+enum Level {
 	WORLD,
 	TEXT,
 	MENU,
+	PROMPT,
 	GAME
 }
 

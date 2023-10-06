@@ -1,4 +1,5 @@
 extends Node
+class_name Bar
 signal value_changed(value, max_value)
 signal empty
 signal full
@@ -6,7 +7,11 @@ signal not_full
 
 export var max_value := 100.0 setget set_max_value
 export var value := 100.0 setget set_value
-
+var ratio : float setget, get_ratio
+func get_ratio():
+	if max_value:
+		return value/max_value
+	return 0
 func set_value(val):
 	var aux_value = value
 	value = clamp(val, 0, max_value)
@@ -32,3 +37,6 @@ func is_full():
 
 func fill() -> void:
 	set_value(max_value)
+
+func empty():
+	return value == 0.0

@@ -73,7 +73,7 @@ func _handle_input(event: InputEvent):
 func goto(state: String):
 	emit_signal("finish", state, null)
 
-func goto_args(state: String, args: Array):
+func goto_args(state: String, args: Dictionary):
 	emit_signal("finish", state, args)
 
 func push(state: String):

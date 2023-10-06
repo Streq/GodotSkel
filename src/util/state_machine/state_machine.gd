@@ -2,6 +2,8 @@ extends Node
 class_name StateMachine
 signal state_changed(state)
 
+signal initialized
+
 export (String) var start_state
 
 var current: State = null
@@ -15,6 +17,7 @@ func initialize():
 		state.root = root
 	current = states[start_state]
 	current.enter(null)
+	emit_signal("initialized")
 
 func physics_update(delta: float):
 	current.physics_update(delta)
@@ -25,7 +28,7 @@ func update(delta: float):
 func handle_input(event: InputEvent):
 	current._handle_input(event)
 
-func _change_state(state_name: String, params = []):
+func _change_state(state_name: String, params = null):
 	current.exit()
 	current = states[state_name]
 	current.enter(params)
